@@ -1,0 +1,518 @@
+﻿@{
+    Layout = null;
+}
+@model menu_digital_sql.Models.platos
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="~/Content/imagenes/logo.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <meta name="keywords" content="restaurante, menu,ed software, delicias, postres, bebidas, whisky, ">
+    <link rel="stylesheet" href="~/Content/css/universal-parallax.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/simple-lightbox.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="~/Content/css/slick.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Lora&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setTimeout(function () {
+                $("#shopping_warning_add").fadeOut(5000);
+            }, 5000);
+
+        });
+    </script>
+
+    <style>
+        .btn-wsp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            top: 15px;
+            right: 15px;
+            background: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 300ms ease;
+        }
+
+        .icono {
+            color: #fff;
+            margin-top: 14px;
+            margin-left: 3px;
+        }
+    </style>
+    <title>152 PIZZAS A LA PIEDRA</title>
+</head>
+<body>
+
+
+    <div class="alert  alerta" style="display: none; z-index:100;position: fixed;width: 100%;background: #4caf50;color: #fff;">
+        <strong>Success!</strong> agregado al carrito.
+    </div>
+
+    <div id="onlyMobile">
+        <div id="onlyMobile_container">
+            <img src="~/Content/imagenes/demo_qr.png"><br>
+            Difruta de una mejor experiencia escaneando el codigo QR desde tu celular o tablet.<br>
+            o ingresando a http://pizzasalapiedra.edsoftware.com.es
+
+        </div>
+    </div>
+
+
+    <nav id="nav-shadow">
+        <div id="nav-shadow_content" class="navlight">
+            <ul>
+                <li class="slim">- NUESTRO MENÚ -</li>
+                <li>
+                    <a href="javascript:goto('section_causas')">CLÁSICAS</a>
+                </li>
+                <li>
+                    <a href="javascript:goto('section_ceviches')">COVID 19</a>
+                </li>
+                <li>
+                    <a href="javascript:goto('section_duos')">PIZZAS DE LA CASA</a>
+                </li>
+                <li>
+                    <a href="javascript:goto('section_trios')">ACOMPAÑA TU PIZZA</a>
+                </li>
+                <li>
+                    <a href="javascript:goto('section_extras')">INGREDIENTES EXTRAS</a>
+                </li>
+                <li>
+                    <a href="javascript:goto('section_bebidas')">BEBIDAS</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <div id="nav-shadow-cart">
+
+        <div id="nav-shadow-cart_content">
+            <div class="title">Pedido</div>
+
+            <div style="text-align:center; margin-top:10px;">
+                <input type="radio" name="shopping_servicetype" value="1" checked onclick="changeServiceType();">A Domicilio
+                <input type="radio" value="2" name="shopping_servicetype" onclick="changeServiceType();"> Paso a Recoger
+            </div>
+
+            <ul class="products" id="shopping_products"></ul>
+
+            <div class="total">Total a Pagar:<br>$<span id="shopping_total">0</span></div>
+
+
+
+            <div><input id="shopping_name" type="text" placeholder="Escribe tu nombre completo:"></textarea></div>
+            <div><textarea id="shopping_instructions" placeholder="Escribe tu indicación de la prepación si es necesario"></textarea></div>
+            <div><textarea id="shopping_address" placeholder="Escribe tu dirección para el envio:"></textarea></div>
+            <div><textarea id="shopping_cuota" placeholder="Escriba con cuanto pagará o hará transferencia:"></textarea></div>
+
+            <div><button type="button" id="shopping_send" onclick="createOrder();">ENVIAR PEDIDO</button></div>
+
+
+        </div>
+
+    </div>
+
+    <div id="nav-button" class="two">
+        <div id="nav-button-menu" class="nav-icon-left" onclick="openMenu();"><span></span><span></span><span></span></div>
+        <div id="nav-button-shopping" onclick="openCart();"><div id="shopping_bubble">2</div></div>
+    </div>
+
+    <div id="bigcontainer" class="container-fluid px-0">
+        <a href="https://api.whatsapp.com/send?phone=+56988986518&text=Hola he visto su menú y quiero hacer un pedido" class="btn-wsp" target="_blank">
+            <i class="fa fa-whatsapp icono"></i>
+        </a>
+        <div id="shopping_warning_add">Toca los productos para agregar al carrito.</div>
+        <div class="restaurant-logo-contact" style="background:var(--color2);color:var(--color3);">
+            <div class="restaurant-logo">
+                <div id="logo" style="background:url(/Content/imagenes/logo.jpeg) center no-repeat; background-size:auto 200px;"></div>
+            </div>
+
+        </div>
+        <div id="restaurant-footer" style="background:#000">
+
+
+            <div class="restaurant-social block">
+
+                <div class="social_container">
+                    <a href="tel:988986518" style="background-color: red;text-align: center;margin: auto;text-decoration-style: none;color: #fff;width: 100%;padding: 9px;">Click para llamar</a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="restaurant-menu">
+            <div id="section_causas" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/margarita.jpeg"></div>
+                    <div class="title">
+                        <h3>CLÁSICAS</h3>
+                    </div>
+                </div>
+                <div class="slick-container">
+                    <div class="slick">
+                        <a href="~/Content/imagenes/ajo.jpg">
+                            <img style="height:125px;" src="~/Content/imagenes/ajo.jpg">
+                        </a>
+                        <a href="~/Content/imagenes/vegetariana.jpg">
+                            <img style="height:125px;" src="~/Content/imagenes/vegetariana.jpeg">
+                        </a>
+                        <a href="~/Content/imagenes/covid.jpg">
+                            <img style="height:125px;" src="~/Content/imagenes/covid.jpeg">
+                        </a>
+                        <a href="~/Content/imagenes/margarita.jpg">
+                            <img style="height:125px;" src="~/Content/imagenes/margarita.jpeg">
+                        </a>
+
+
+
+                    </div>
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @{ 
+                           int k = 0;
+                        }
+                        @foreach (var i in Model.multiple)
+                        {
+                            if (k==3)
+                            {
+                                k = 0;
+                            }
+
+
+                            if (i.titulo_cat == "CLASICAS" && k==0)
+                            {
+                                k = k + 1;
+
+                                <div class="block-product-01">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                    </div>
+                                    <div class="row">
+                                        <p>@i.descripcion</p>
+                                    </div>
+                                    <ul class="multiple-prices">
+                                        @foreach (var m in Model.multiple)
+                                        {
+                                            if (i.id_producto == m.id_sub_producto_producto)
+                                            {
+                                                <li onclick="window.addProduct('@m.id_sub_producto','@m.titulo @m.titulo_sub','@m.precio_sub');">
+                                                    <div class="subtitle">@m.titulo_sub</div>
+                                                    <div class="subprice" style="color:var(--color1); ">$@m.precio_sub</div>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                k = k + 1;
+                            }
+                        }
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="section_ceviches" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/covid.jpeg"></div>
+                    <div class="title">
+                        <h3>COVID 19</h3>
+                    </div>
+
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @{
+                            int P = 0;
+                        }
+                        @foreach (var i in Model.multiple)
+                        {
+                            if (P == 3)
+                            {
+                                P = 0;
+                            }
+
+
+                            if (i.titulo_cat == "COVID 19" && P == 0)
+                            {
+                                P = P + 1;
+
+                                <div class="block-product-01">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                    </div>
+                                    <div class="row">
+                                        <p>@i.descripcion</p>
+                                    </div>
+                                    <ul class="multiple-prices">
+                                        @foreach (var m in Model.multiple)
+                                        {
+                                            if (i.id_producto == m.id_sub_producto_producto)
+                                            {
+                                                <li onclick="window.addProduct('@m.id_sub_producto','@m.titulo @m.titulo_sub','@m.precio_sub');">
+                                                    <div class="subtitle">@m.titulo_sub</div>
+                                                    <div class="subprice" style="color:var(--color1); ">$@m.precio_sub</div>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                P = P + 1;
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div id="section_duos" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/vegetariana.jpeg"></div>
+                    <div class="title">
+                        <h3>PIZZAS DE LA CASA</h3>
+                    </div>
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @{
+                            int c = 0;
+                        }
+                        @foreach (var i in Model.multiple)
+                        {
+                            if (c == 3)
+                            {
+                                c = 0;
+                            }
+
+
+                            if (i.titulo_cat == "PIZZAS DE LA CASA" && c == 0)
+                            {
+                                c = c + 1;
+
+                                <div class="block-product-01">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                    </div>
+                                    <div class="row">
+                                        <p>@i.descripcion</p>
+                                    </div>
+                                    <ul class="multiple-prices">
+                                        @foreach (var m in Model.multiple)
+                                        {
+                                            if (i.id_producto == m.id_sub_producto_producto)
+                                            {
+                                                <li onclick="window.addProduct('@m.id_sub_producto','@m.titulo @m.titulo_sub','@m.precio_sub');">
+                                                    <div class="subtitle">@m.titulo_sub</div>
+                                                    <div class="subprice" style="color:var(--color1); ">$@m.precio_sub</div>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                c = c + 1;
+                            }
+                        }
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="section_trios" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/ajo.jpg"></div>
+                    <div class="title">
+                        <h3>ACOMPAÑA TU PIZZA</h3>
+                    </div>
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @foreach (var i in Model.simple)
+                        {
+                            if (i.titulo_cat == "ACOMPAÑA TU PIZZA")
+                            {
+
+                                <div class="block-product-01" onclick="window.addProduct('@i.id_producto','@i.titulo','@i.precio');">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                        <div class="price"
+                                             style="color:var(--color1); ">
+                                            $@i.precio
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>
+                                            @i.descripcion
+                                        </p>
+                                    </div>
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="section_extras" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/aceituna.jpg"></div>
+                    <div class="title">
+                        <h3>INGREDIENTES EXTRAS</h3>
+                    </div>
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @foreach (var i in Model.simple)
+                        {
+                            if (i.titulo_cat == "INGREDIENTES")
+                            {
+
+                                <div class="block-product-01" onclick="window.addProduct('@i.id_producto','@i.titulo','@i.precio');">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                        <div class="price"
+                                             style="color:var(--color1); ">
+                                            $@i.precio
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>
+                                            @i.descripcion
+                                        </p>
+                                    </div>
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="section_bebidas" class="section" style="background:var(--color2);color:var(--color3);">
+                <div class="block-title-02 block-title-parallax">
+                    <div class="parallax" data-parallax-image="/Content/imagenes/gaseosa.jpeg"></div>
+                    <div class="title">
+                        <h3>BEBIDAS</h3>
+                    </div>
+                </div>
+                <div class="block-products">
+                    <div class="block-products-container ">
+                        @foreach (var i in Model.simple)
+                        {
+                            if (i.titulo_cat == "BEBIDAS")
+                            {
+
+                                <div class="block-product-01" onclick="window.addProduct('@i.id_producto','@i.titulo','@i.precio');">
+                                    <div class="row">
+                                        <div class="title">@i.titulo</div>
+                                        <div class="price"
+                                             style="color:var(--color1); ">
+                                            $@i.precio
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <p>
+                                            @i.descripcion
+                                        </p>
+                                    </div>
+
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div id="restaurant-footer" style="background:#000">
+            <div class="restaurant-social block">
+                <h2>CONTÁCTANOS</h2>
+                <p class="p-color">Dirección: Esmeralda 152, Pica</p>
+                <p class="p-color">Teléfono(s): 988986518</p>
+                <p class="p-color">Horario de atención: 18:30 Hrs - 22:30 Hrs</p>
+
+            </div>
+
+            <div class="restaurant-social block">
+                <h2>SÍGUENOS</h2>
+                <div class="social_container">
+                    <a href="javascript:openSocial('https://www.facebook.com/Pizza-a-la-PiedraPica-110816337216326');" class="col social facebook"></a>
+
+                    <a href="javascript:openSocial('https://api.whatsapp.com/send?phone=+56988986518&text=%C2%A1Hola%21%20estoy%20viendo%20su%20men%C3%BA%20y%20me%20gustar%C3%ADa...');" class="col social whatsapp"></a>
+                    <a href="javascript:openSocial('https://www.instagram.com/152pizzasalapiedra/');" class="col social instagram"></a>
+
+                </div>
+            </div>
+            <a href="https://www.facebook.com/ED-Software-101017441673079/" target="_blank">
+                <div id="restaurant-footer-menu"></div>
+            </a>
+            <div id="restaurant-footer-shadow"></div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="~/Content/js/universal-parallax.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/slick.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/simple-lightbox.min.js"></script>
+
+    <script type="text/javascript">
+        var restaurantWhatsapp = '+56988986518';
+
+        var shippingPrice = 1000;
+
+        var minimum_purchase = 200;
+    </script>
+
+    <script src="~/Content/js/app.js?v=5"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139631388-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-139631388-3');</script>
+
+</body>
+</html>

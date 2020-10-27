@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "_menuAdmin";
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="~/css/menu.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .nav-item {
+            text-decoration: none;
+            color: #e1ffff;
+        }
+
+        .nav-item-i {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .nav-item:hover {
+            color: #e1ffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-side-menu">
+        <div class="brand">Administrador</div>
+
+        <i class="fas fa-list-ul fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content" aria-controls="menu-content" aria-expanded="false"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <a href="~/Home/Admin" class="nav-item" id="usuario">
+                    <li>
+                        <i class="fas fa-list-ul nav-item-i"></i>Lista de platos
+                    </li>
+                </a>
+                <a href="~/Home/Agregar" class="nav-item" id="promo">
+                    <li>
+                        <i class="fas fa-list-ul nav-item-i"></i>Rewgistrar platos simples
+                    </li>
+                </a>
+                <a href="~/Home/AgregarMultiple" class="nav-item" id="promo">
+                    <li>
+                        <i class="fas fa-list-ul nav-item-i"></i>Rewgistrar platos multiples
+                    </li>
+                </a>
+
+
+
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

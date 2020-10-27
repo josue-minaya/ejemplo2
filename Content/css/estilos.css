@@ -1,0 +1,292 @@
+﻿body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #11171a;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+
+
+
+.content {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    width: 430px;
+    height: 380px;
+    background-color: rgb(255, 255, 255, 0.8);
+    position: absolute;
+    margin-left: 22%;
+    padding: 50px;
+}
+
+.img_card {
+    padding-top: 50px;
+    padding-left: 250px;
+    width: 60%;
+    height: 600px;
+}
+
+.somostamaño {
+    width: 98%;
+    height: 20%;
+}
+
+.somostamaño2 {
+    width: 98%;
+    height: 60%;
+}
+
+.botonmas {
+    width: 100%;
+    text-align: center;
+}
+
+#login2 {
+    display: none;
+}
+
+
+
+
+/*css administrador*/
+.nav-item {
+    text-decoration: none;
+    color: #e1ffff;
+}
+
+.nav-item-i {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav-item:hover {
+    color: #e1ffff;
+    text-decoration: none;
+}
+
+#login {
+    text-align: center;
+}
+
+form > div {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+}
+
+    form > div > input {
+        box-sizing: border-box;
+        padding: 15px;
+        width: 100%;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    }
+
+    form > div > i {
+        position: absolute;
+        right: 15px;
+        top: 18px;
+    }
+
+.forma {
+    width: 79%;
+    float: right;
+}
+
+.menu-admin {
+    background-color: #23282e;
+    color: white;
+}
+
+.ocultar {
+    display: none;
+}
+
+.letrasize {
+    font-size: 17px;
+}
+
+.tamadmin {
+    width: 40%;
+    margin: auto;
+}
+
+@media screen and (max-width: 415px) and (min-width:321px) {
+    .somostamaño2 > .content {
+        height: 480px;
+        width: 320px;
+        margin-left: 10%;
+        display: inline-block;
+    }
+
+    .contenedor2 {
+        margin-bottom: 120px;
+    }
+
+    .tam-card {
+        padding-top: 0px;
+        width: 300px;
+        height: 120px;
+    }
+
+    .forma {
+        width: 98%;
+    }
+
+    .tamadmin {
+        width: 95%;
+        margin: auto;
+    }
+
+    .img_card {
+        width: 1000px;
+        height: 550px;
+        padding-top: 0;
+        padding-left: 30px;
+        padding-bottom: 70px;
+    }
+}
+
+@media screen and (max-width: 769px) and (min-width:416px) {
+    .somostamaño2 > .content {
+        height: 480px;
+        width: 320px;
+        margin-left: 10%;
+        display: inline-block;
+    }
+
+    .contenedor2 {
+        margin-bottom: 120px;
+    }
+
+    .tam-card {
+        padding-top: 0px;
+        width: 300px;
+        height: 120px;
+    }
+
+    .forma {
+        width: 98%;
+    }
+
+    .tamadmin {
+        width: 95%;
+        margin: auto;
+    }
+
+    .img_card {
+        width: 1000px;
+        height: 550px;
+        padding-top: 0;
+        padding-left: 30px;
+        padding-bottom: 70px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width:770px) {
+    .somostamaño2 > .content {
+        height: 480px;
+        width: 320px;
+        margin-left: 10%;
+        display: inline-block;
+    }
+
+  
+
+    .forma {
+        width: 98%;
+        float:none;
+    }
+
+  
+}
+
+@media screen and (max-width: 1390px) and (min-width:1025px) {
+    .somostamaño2 > .content {
+        height: 480px;
+        width: 320px;
+        margin-left: 10%;
+        display: inline-block;
+    }
+
+    .contenedor2 {
+        margin-bottom: 120px;
+    }
+
+    .tam-card {
+        padding-top: 0px;
+        width: 300px;
+        height: 120px;
+    }
+
+    .forma {
+        width: 78%;
+    }
+
+    .tamadmin {
+        width: 95%;
+        margin: auto;
+    }
+
+    .img_card {
+        width: 1000px;
+        height: 550px;
+        padding-top: 0;
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .somostamaño2 > .content {
+        height: 460px;
+        width: 320px;
+        margin-left: 4%;
+        display: inline-block;
+    }
+
+    .contenedor2 {
+        margin-bottom: 150px;
+    }
+
+    .tam-card {
+        padding-top: 0px;
+        width: 300px;
+        height: 120px;
+    }
+
+    .forma {
+        width: 98%;
+    }
+
+    .tamadmin {
+        width: 95%;
+        margin: auto;
+    }
+
+    .img_card {
+        padding-top: 0;
+        padding-left: 30px;
+        padding-bottom: 70px;
+        width: 1000px;
+        height: 550px;
+    }
+}
+
+.t-ali {
+    font-family: Arial, Helvetica, sans-serif;
+}
+

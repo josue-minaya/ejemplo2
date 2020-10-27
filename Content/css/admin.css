@@ -1,0 +1,38 @@
+﻿.content-platos{
+    width:79%;
+    float:right;
+}
+.delete {
+    background: #41b937;
+    border-radius: 4px;
+    width: 60px;
+    height: 20px;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+}
+.delete_inac {
+    background: #ff5162;
+    border-radius: 4px;
+    width: 80px;
+    height: 20px;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+@media only all and (max-width: 880px) {
+    .content-platos {
+        width: 100%;
+        margin:auto;
+    }
+}
+
+@media only all and (max-width: 1140px) and (min-width:960px) {
+    .content-platos {
+        width: 79%;
+        float:right;
+    }
+}
